@@ -38,13 +38,14 @@ function setup_environment_variables() {
 
   # LOGGING CONFIGURATION
   BASTION_MNT="/var/log/bastion"
-  BASTION_LOG="bastion.log"
+  TIMESTAMP=$(date +%s)
+  BASTION_LOG="bastion_${TIMESTAMP}.log"
   echo "Setting up bastion session log in ${BASTION_MNT}/${BASTION_LOG}"
   mkdir -p ${BASTION_MNT}
   BASTION_LOGFILE="${BASTION_MNT}/${BASTION_LOG}"
   BASTION_LOGFILE_SHADOW="${BASTION_MNT}/.${BASTION_LOG}"
   touch ${BASTION_LOGFILE}
-  ln -f ${BASTION_LOGFILE} ${BASTION_LOGFILE_SHADOW}
+  ln ${BASTION_LOGFILE} ${BASTION_LOGFILE_SHADOW}
   mkdir -p /usr/bin/bastion
   touch /tmp/messages
   chmod 770 /tmp/messages
