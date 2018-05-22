@@ -44,7 +44,7 @@ function setup_environment_variables() {
   BASTION_LOGFILE="${BASTION_MNT}/${BASTION_LOG}"
   BASTION_LOGFILE_SHADOW="${BASTION_MNT}/.${BASTION_LOG}"
   touch ${BASTION_LOGFILE}
-  ln ${BASTION_LOGFILE} ${BASTION_LOGFILE_SHADOW}
+  ln -f ${BASTION_LOGFILE} ${BASTION_LOGFILE_SHADOW}
   mkdir -p /usr/bin/bastion
   touch /tmp/messages
   chmod 770 /tmp/messages
